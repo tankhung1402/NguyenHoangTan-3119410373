@@ -1,0 +1,113 @@
+﻿@{
+    Layout = null;
+}
+@model PaymentDetailViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF Review</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Pay1193</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Pay1193.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+</head>
+
+<body>
+    <div class="container text-black">
+        <div class="row">
+            <div class="col-12 position-relative" style=" margin-bottom: 40px;">
+                <h3 class="text-center" style="text-transform: uppercase; font-size: 32px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; letter-spacing: 3px">Payment Bill</h3>
+                <span class="position-absolute border py-2 px-4 " style="top: 0; right: 0;">@Model.TaxCode</span>
+                <p class="text-center">@DateTime.UtcNow.ToShortDateString()</p>
+            </div>
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-3 my-1">Pay ID:</div>
+                        <div class="col-9 my-1">@Model.Id</div>
+                        <div class="col-3 my-1">Emloyee ID:</div>
+                        <div class="col-9 my-1">@Model.EmployeeId</div>
+                        <div class="col-3 my-1">Month Pay:</div>
+                        <div class="col-9 my-1">@Model.PayMonth</div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-3 my-1">Name:</div>
+                        <div class="col-9 my-1">@Model.FullName</div>
+                        <div class="col-3 my-1">NiNo:</div>
+                        <div class="col-9 my-1">@Model.NiNo</div>
+                        <div class="col-3 my-1">Date Pay:</div>
+                        <div class="col-9 my-1">@Model.PayDate.ToShortDateString().ToString()</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 20px;">
+                <table class="table table-bordered text-black">
+                    <thead>
+                        <tr>
+                            <th>Houly rate: @Model.HourlyRate</th>
+                            <th>Houly Worked: @Model.HourlyWorked</th>
+                            <th>Contractual Hours: @Model.ContractualHours</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="row">
+                <table class="table table-bordered text-black">
+                    <thead>
+                        <tr>
+                            <th>OverTime Hours</th>
+                            <th>Contractual Earnings</th>
+                            <th>Overtime Earnings</th>
+                            <th>Tax</th>
+                            <th>Nic</th>
+                            <th>UnionFee</th>
+                            <th>SLC</th>
+                            <th>Total Deduction</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Model.OvertimeHours</td>
+                            <td>@Model.ContractualEarnings</td>
+                            <td>@Model.OvertimeEarnings</td>
+                            <td>@Model.Tax</td>
+                            <td>@Model.NiC</td>
+                            <td>@Model.UnionFee</td>
+                            <td>@Model.SLC</td>
+                            <td>@Model.TotalDeduction</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row mt-5">
+                <div class="col-9">
+                    <div class="d-flex my-1">
+                        <span>Người lập hóa đơn:</span>
+                        <span></span>
+                    </div>
+                    <div class="d-flex my-1">
+                        <span>Date: @DateTime.UtcNow.ToShortDateString()</span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div style="font-size: 20px;"><strong>Total Earning:</strong>&nbsp;@Model.TotalEarnings</div>
+                    <div style="margin:10px 0 0 0;"><strong>Net Payment:</strong>&nbsp;@Model.NetPayment</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+

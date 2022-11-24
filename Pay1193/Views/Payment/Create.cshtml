@@ -1,0 +1,139 @@
+﻿@using Pay1193.Entity
+@model PaymentCreateViewModel
+
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a asp-controller="Payment" asp-action="Index">Payroll List</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">New Payment</li>
+                </ol>
+            </nav><br />
+            <form method="post" asp-action="Create" >
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <input type="hidden" class="form-control" asp-for="EmployeeId" placeholder="EMP000" />
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <input type="hidden" class="form-control" asp-for="NationalInsuranceNo" />
+                    </div>
+                </div>
+
+                
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label asp-for="DatePay"></label>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <input type="date" class="form-control" asp-for="DatePay" />
+                        <span asp-validation-for="DatePay" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-2">
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <label asp-for="MonthPay"></label>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <select asp-for="MonthPay" class="form-control">
+                            <option selected>--- Select Month ---</option>
+                            <option>January</option>
+                            <option>February</option>
+                            <option>March</option>
+                            <option>April</option>
+                            <option>May</option>
+                            <option>June</option>
+                            <option>July</option>
+                            <option>August</option>
+                            <option>September</option>
+                            <option>October</option>
+                            <option>November</option>
+                            <option>December</option>
+                        </select>
+                        <span asp-validation-for="MonthPay" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label asp-for="TaxYearId"></label>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <select asp-for="TaxYearId" class="form-control" asp-items="ViewBag.taxYears">
+                            <option selected> --- Select Tax Year ---</option>
+                        </select>
+                        <span asp-validation-for="TaxYearId" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-2">
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <label asp-for="TaxCode"></label>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <input type="text" class="form-control" asp-for="TaxCode" />
+                        <span asp-validation-for="TaxCode" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label asp-for="HourlyRate"></label>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <input type="text" class="form-control" asp-for="HourlyRate" />
+                        <span asp-validation-for="HourlyRate" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-2">
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <label asp-for="HourlyWorked"></label>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <input type="text" class="form-control" asp-for="HourlyWorked" />
+                        <span asp-validation-for="HourlyWorked" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label asp-for="ContractualHours"></label>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <input type="text" class="form-control" asp-for="ContractualHours" />
+                        <span asp-validation-for="ContractualHours" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-2">
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-secondary btn-rounded float-left" style="margin-right:auto.7em">Submit</button>
+                    <a asp-controller="Payment" asp-action="Create" class="btn btn-primary btn-rounded float-right" style="margin-right:auto.7em">Cancel</a>
+                    <br />
+                    <br />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_validationScriptsPartial");
+    }
+    }
